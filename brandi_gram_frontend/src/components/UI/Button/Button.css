@@ -1,0 +1,32 @@
+.button{
+    font-weight: 600;
+    padding: 10px 15px;
+    font-size: 14px;
+    border: none;
+}
+/* color and bgcl */
+.button.button-default{
+    background-color: #0084ed;
+    color: #fff;
+    display: inline-block;
+}
+.button.button-hash{
+    background-color: #ccc;
+    color: #fff;
+    cursor: pointer;
+}
+/* Shape */
+.button.default{
+    border-radius: 3px;
+}
+.button.circle{
+    border-radius: 50%;
+    display: inline-block;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+}
+.button.oval{
+    border-radius: 20px;
+
+}

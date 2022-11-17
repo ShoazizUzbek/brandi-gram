@@ -1,0 +1,17 @@
+.image{
+    width: 100%;
+    height: auto;
+}
+/* shape */
+.image.default{
+    border: 0;
+    border-radius: 0;
+}
+.image.oval{
+    border: 0;
+    border-radius: 20%;
+}
+.image.circle{
+    border: 0;
+    border-radius: 50%;
+}
