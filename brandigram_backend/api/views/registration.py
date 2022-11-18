@@ -5,6 +5,7 @@ import requests
 from django.core import files
 from django.db import transaction
 from drf_yasg.utils import swagger_auto_schema
+from instagrapi import Client
 
 from instascrape import Profile
 from rest_framework.exceptions import APIException
@@ -12,6 +13,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from api.serializers.profile import UserSerializer
+from common.models import Category
 from user.models import User
 
 
@@ -39,35 +41,29 @@ class RegistrationView(APIView):
         serializer.is_valid(raise_exception=True)
         validated_data = serializer.validated_data
         password = validated_data.pop('password')
+        category = validated_data.pop('category')
         if User.objects.filter(phone_number=validated_data['phone_number']).exists():
             raise APIException('This phone number already exists')
+        profile_url = validated_data.get('profile_url')
         with transaction.atomic():
             user = User.objects.create_user(password=password, **validated_data)
-            # profile_url = validated_data.get('profile_url')
-            # result = re.search('https://www.instagram.com/(.*)/', profile_url)
-            # session_id = '7134031422%3A3nLWvvbPlTvjgU%3A14%3AAYcCYaJXUWLIG3XqoCBnjG3fmaM1cnVWIgy7YY1hIug'
-            # username = result.group(1)
-            # ins_user = InstagramUser(username=username, sessionid=session_id)
-            # print(ins_user)
+            category_list = Category.objects.filter(id__in=category)
+            user.category.set(category_list)
+            profile_url = validated_data.get('profile_url')
+            result = re.search('https://www.instagram.com/(.*)/', profile_url)
+            username = result.group(1)
 
-            # session_id = '7134031422%3A3nLWvvbPlTvjgU%3A14%3AAYcCYaJXUWLIG3XqoCBnjG3fmaM1cnVWIgy7YY1hIug'
-            # headers = {
-            #     "user-agent": "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Mobile Safari/537.36 Edg/87.0.664.57",
-            #     "cookie": f"sessionid={session_id};"}
-            # result = re.search('https://www.instagram.com/(.*)/', profile_url)
-            # username = result.group(1)
-            #
-            # profile = Profile(profile_url)
-            # profile.scrape(headers=headers)
-            # print(profile.to_dict())
-            #
-            # profile_pic_url = profile.profile_pic_url
-            # print(profile_pic_url)
-            # file_name, lf = self.get_image(profile_pic_url)
-            #
-            # user.profile_picture.save(file_name, files.File(lf))
-            # user.username = username
-            # user.save()
+            profile = Client()
+            profile.login("brandigram.uz", "newkhantigr1998")
+
+            user_insta = profile.user_info_by_username(username)
+            profile_pic_url = user_insta.profile_pic_url
+            file_name, lf = self.get_image(profile_pic_url)
+            user.profile_picture.ave(file_name, files.File(lf))
+            user.followers = user_insta.follower_count
+            user.instagram_category = user_insta.category_name
+            user.username = username
+            user.save()
 
         return Response(data={'success': True})
 
