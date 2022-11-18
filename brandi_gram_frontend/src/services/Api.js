@@ -1,0 +1,1 @@
+export const API_URI = 'https://1961-84-54-83-231.eu.ngrok.io/api' 

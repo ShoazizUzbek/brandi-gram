@@ -11,3 +11,32 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* Global not changing styles */
+label{
+  font-size: 12px;
+  font-weight: 400;
+  margin-left: 5px;
+}
+.input{
+  padding: 7px 10px;
+  font-size: 14px;
+  margin: 2px;
+  margin-bottom: 7px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.input:focus{
+  border: 1px solid #0084ed;
+  outline: none;
+}
+
+.card-button--container{
+  width: 100%;
+  display: flex;
+  justify-content: end;
+}
+
+.card-input{
+  width: 95%;   
+}

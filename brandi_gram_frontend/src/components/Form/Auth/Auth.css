@@ -1,0 +1,14 @@
+.auth-form--container{
+    display: block;
+    margin: auto;
+    width: 30%;
+}
+.card-padding{
+    padding: 10px 15px;
+}
+
+.auth-form--container .auth-card--header{
+}
+.auth-form--container .auth-card-body{
+    border-top: 1px solid #ccc;
+}
