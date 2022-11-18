@@ -7,7 +7,15 @@ from user.models import User
 class ProfileListView(APIView):
 
     def get(self, request):
-        profiles = User.objects.prefetch_related('posts', 'category').all()
+        query_params = dict(request.query_params)
+        category = []
+        category_data = query_params.get('category_id')
+        if category_data:
+            category.append(category_data[0])
+            profiles = User.objects.prefetch_related('posts', 'category').filter(category__in=category)
+        else:
+            profiles = User.objects.prefetch_related('posts', 'category').all()
+
         data = []
         for profile in profiles:
             post_data = []
