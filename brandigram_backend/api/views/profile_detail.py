@@ -11,7 +11,6 @@ class ProfileDetailView(APIView):
         post_data = []
         category_data = []
         profile_picture = None
-
         for post in profile.posts.all():
             post_img = None
             if post.post_image:
@@ -21,7 +20,8 @@ class ProfileDetailView(APIView):
                 'post_url': post.post_url,
                 'post_image': post_img,
                 'price': post.price,
-                'description': post.description
+                'description': post.description,
+                'title': post.post_title
             })
 
         if profile.profile_picture:
