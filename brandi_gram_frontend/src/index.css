@@ -40,3 +40,21 @@ label{
 .card-input{
   width: 95%;   
 }
+.main{
+  display: flex;
+}
+.main .filter--container{
+  width: 20%;
+  padding: 20px 40px;
+  /* display: flex; */
+  flex-wrap: wrap;
+}
+.main .profile-list--container{
+  width: 80%;
+  padding: 20px 40px;
+  display: flex;
+}
+
+.profile-navbar{
+  display: flex;
+}

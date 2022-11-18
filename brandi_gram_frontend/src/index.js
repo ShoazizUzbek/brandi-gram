@@ -8,20 +8,31 @@ import {
   RouterProvider,
   Route,
 } from "react-router-dom";
-import Root from "./routes/root";
+import Main from "./routes/Main";
 import ErrorPage from "./error-page";
 import AuthPage from './routes/AuthPage';
+import LoginPage from './routes/LoginPage';
+import Profile from './routes/Profile';
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Root/>,
+    element: <Main/>,
     errorElement: <ErrorPage/>,
   },
   {
     path: "/authentification",
     element: <AuthPage/>,
     errorElement: <ErrorPage/>,
+  },
+  {
+    path: "/login",
+    element: <LoginPage/>,
+    errorElement: <ErrorPage/>,
+  },
+  {
+    path: "profile/:profileId",
+    element: <Profile />,
   },
 ]);
 

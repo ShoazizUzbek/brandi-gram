@@ -1,1 +1,2 @@
-export const API_URI = 'https://1961-84-54-83-231.eu.ngrok.io/api' 
+export const API_URI = 'http://127.0.0.1:8000/api' 
+export const IMAGE_URI = 'http://127.0.0.1:8000' 

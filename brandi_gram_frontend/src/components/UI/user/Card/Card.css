@@ -1,14 +1,14 @@
 .card--header{
     display: flex;
     width: 100%;
-    padding: 5px;
+    padding: 10px 10px;
 }
 .card--header .card--profileImage{
     width: 30%;
 }
 .card--header .card--userInfo{
     width: 70%;
-    padding-left: 5px;
+    padding-left: 10px;
 }
 
 .card--header .card--userInfo .card--userInfo--userName{
@@ -29,5 +29,5 @@
 
 .card--profile-last-posts{
     display: flex;
-    
+
 }
