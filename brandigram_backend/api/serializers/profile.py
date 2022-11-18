@@ -7,4 +7,4 @@ class UserSerializer(serializers.Serializer):
     phone_number = serializers.CharField()
     password = serializers.CharField()
     profile_url = serializers.URLField()
-    category_id = serializers.IntegerField()
+    category = serializers.ListSerializer(child=serializers.IntegerField())
