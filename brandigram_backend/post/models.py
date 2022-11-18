@@ -18,4 +18,5 @@ class Post(BaseModel):
     post_url = models.URLField()
     post_image = models.ImageField()
     price = models.IntegerField()
+    post_title = models.TextField(null=True,)
     description = models.TextField(default="")
