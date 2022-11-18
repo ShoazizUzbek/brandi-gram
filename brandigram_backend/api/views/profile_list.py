@@ -40,7 +40,8 @@ class ProfileListView(APIView):
                 'username': profile.username,
                 'followers': profile.followers,
                 'profile_picture': profile_picture,
-                'category': category_data
+                'category': category_data,
+                'posts': post_data
             })
         return Response(data=data)
 
