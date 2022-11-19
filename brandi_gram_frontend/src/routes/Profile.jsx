@@ -90,11 +90,13 @@ export default function Profile({}){
                         {/* <CgProfile /> */}
                     </div>
                 </div>
-                <div className="profile-category--lists">
+                <div className="profile-list--container">
                 
                     {profileList && profileList.posts && profileList.posts.length > 0 ? profileList.posts.map((item, index)=>(
-                        <PostsCard price={item.price} image={item.post_image} descripiton={item.descripiton} title={item.title} redirectLink={item.post_url} key={index}/>
+                        <div style={{marginLeft: "5px", marginRight: "5px"}}><PostsCard price={item.price} image={item.post_image} descripiton={item.descripiton} title={item.title} redirectLink={item.post_url} key={index}/></div>
                     )) : ''}
+                    {/* <div style={{marginLeft: "5px", marginRight: "5px"}}><PostsCard price={'15$'} image={profileList.profile_picture} descripiton={'Some thisty'} title={'Some thisty'} redirectLink={'link.uz'} /></div> */}
+
                         
                 </div>
                 <div className="profile-card-lists">

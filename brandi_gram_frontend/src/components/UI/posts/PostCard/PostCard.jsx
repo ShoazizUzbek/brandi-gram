@@ -22,7 +22,7 @@ export default function PostsCard({price, image, redirectLink, descripiton, titl
                 </div>
             </div>
             <div className="posts-card--footer">
-                <Button action={redirectPost}>Link for post</Button>
+                <Button action={redirectPost} text="Link for post"></Button>
             </div>
         
         </CardWrapper>
