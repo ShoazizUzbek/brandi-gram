@@ -79,9 +79,7 @@ export default function Main(){
             </div>
             <div className="profile-list--container">
                 {profileList && profileList.length > 0 ?  profileList.map(item=>(
-                    <Link to={API_URI+'/profile/detail/'+item.id}>
-                        <div style={{marginLeft: "5px", marginRight: "5px"}}> <Card username={item.username} profilePicture={item.profile_picture} followers={item.followers} tags={item.category}/></div>
-                    </Link>
+                        <div style={{marginLeft: "5px", marginRight: "5px"}} key={item.id}> <Card username={item.username} profilePicture={item.profile_picture} followers={item.followers} tags={item.category} id={item.id}/></div>
                 )) : ''}
             </div>
         </div>

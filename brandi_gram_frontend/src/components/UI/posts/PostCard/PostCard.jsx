@@ -1,11 +1,13 @@
 import CardWrapper from "../../CardWrapper/CardWrapper"
 import Image from "../../Image/Image"
+import Button from "../../Button/Button"
 
 export default function PostsCard({price, image, redirectLink, descripiton}){
 
     function redirectPost(){
         console.log('console')
         // TODO: redirectLink use redirect link
+        
     }
     return (
         <CardWrapper>

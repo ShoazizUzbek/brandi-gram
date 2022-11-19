@@ -2,11 +2,12 @@ import { useState } from "react"
 import CardWrapper from "../../UI/CardWrapper/CardWrapper"
 import Button from "../../UI/Button/Button"
 import { API_URI } from "../../../services/Api";
-import { redirect } from "react-router-dom";
+import { redirect, useNavigate } from "react-router-dom";
 export default function Login() {
     const [phone_number, setPhoneNumber] = useState('998158661')
     const [password, setPassword] = useState('tester123465')
     const [error, setError] = useState('')
+    let navigate = useNavigate();
 
     const [buttonState, setButtonState] = useState(false)
 
@@ -39,7 +40,7 @@ export default function Login() {
         }else if(loginInfo.access){
             localStorage.setItem('token', loginInfo.access);
             alert('You have successfuly loged in')
-            redirect("/");
+            navigate("/");
         }
     }
 

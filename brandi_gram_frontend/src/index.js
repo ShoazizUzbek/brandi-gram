@@ -13,6 +13,7 @@ import ErrorPage from "./error-page";
 import AuthPage from './routes/AuthPage';
 import LoginPage from './routes/LoginPage';
 import Profile from './routes/Profile';
+import CreatePostPage from './routes/CreatePostPage';
 
 const router = createBrowserRouter([
   {
@@ -31,7 +32,12 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage/>,
   },
   {
-    path: "profile/:profileId",
+    path: "/create-post",
+    element: <CreatePostPage />,
+    errorElement: <ErrorPage/>,
+  },
+  {
+    path: "profile/detail/:profileId",
     element: <Profile />,
   },
 ]);
