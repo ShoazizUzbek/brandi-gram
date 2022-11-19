@@ -6,12 +6,14 @@ import Button from "../components/UI/Button/Button";
 import PostsCard from "../components/UI/posts/PostCard/PostCard";
 import {AiOutlinePlusCircle} from "react-icons/ai/index.esm";
 import { Link } from "react-router-dom";
+import Image from "../components/UI/Image/Image";
 
 export default function Profile({}){
     const {profileId} = useParams();
 
     const [profileList, setProfileList] = useState({})
     const [login, setLogin] = useState('');
+    const [followersCount, setFollowersCount] = useState('');
 
 
     useEffect(()=>{
@@ -36,6 +38,14 @@ export default function Profile({}){
             console.log(getProfileList);
 
             setProfileList(getProfileList);
+            if(parseInt(getProfileList.followers) / 1000 >= 1){
+                let followersDev = (parseInt(getProfileList.followers) / 1000) + '';
+                let splitNum = followersDev.split('.');
+                setFollowersCount(followersDev.split('.')[0]+'K')
+            }else{
+                setFollowersCount(getProfileList.followers)
+            }
+    
 
 
         }else{
@@ -44,7 +54,13 @@ export default function Profile({}){
     
 
     }
-
+    // Posts type
+    // 'id': post.id,
+    //  'post_url': post.post_url,
+    //  'post_image': post_img,
+    //  'price': post.price,
+    //  'description': post.description,
+    //  'title': post.post_title
 
 
     return (
@@ -53,11 +69,20 @@ export default function Profile({}){
             <div style={{padding: "40px"}}>
                 <div className="profile-navbar">
                     <div className="navbar--logo">
-                        <div className="profile-nav--logo">
-                         {profileList.username}
+                        <div className="profile-nav--logo" style={{display: 'flex', alignItems: "center"}}>
+                            <div style={{width: "20%", marginRight: "10px"}}>
+                             <Image link={profileList.profile_picture} shape="circle" />
+
+                            </div>
+
+                            <a href={profileList.profile_url} target='_blank' className="profile_url"  >{profileList.username}</a>
+                            
                         </div>
-                        {profileList && profileList.category && profileList.category.length > 0 ? profileList.category.map(tag=>(
-                            <Button type="grey" shape="oval" text={tag}/>
+                        <div style={{marginLeft: "10px", marginBottom: "10px"}}> 
+                        {followersCount}
+                        </div>
+                        {profileList && profileList.category && profileList.category.length > 0 ? profileList.category.map((tag, index)=>(
+                            <Button type="grey" shape="oval" text={tag} key={index} />
                         )) : ''}
                     </div>
                     <div className="profile" style={{fontSize: "35px"}}>
@@ -66,8 +91,9 @@ export default function Profile({}){
                     </div>
                 </div>
                 <div className="profile-category--lists">
-                    {profileList && profileList.posts && profileList.posts.length > 0 ? profileList.posts.map(item=>(
-                        <PostsCard price={item.price} image={item.image} descripiton={item.descripiton} redirectLink={item.redirectLink} />
+                
+                    {profileList && profileList.posts && profileList.posts.length > 0 ? profileList.posts.map((item, index)=>(
+                        <PostsCard price={item.price} image={item.post_image} descripiton={item.descripiton} title={item.title} redirectLink={item.post_url} key={index}/>
                     )) : ''}
                         
                 </div>

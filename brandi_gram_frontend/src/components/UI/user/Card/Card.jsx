@@ -6,35 +6,49 @@ import { Link } from "react-router-dom";
 
 
 import './Card.css'
+import { useEffect, useState } from "react";
 
 export default function Card({ username, profilePicture, tags, followers, lastPosts, id }) {
 
+    const [followersCount, setFollowersCount] = useState(0)
 
+    useEffect(()=>{
+        // parseInt(followers) / 1000 >= 1 ? '' + (parseInt(followers) / 1000).split('.')[0]
+        if(parseInt(followers) / 1000 >= 1){
+            let followersDev = (parseInt(followers) / 1000) + '';
+            let splitNum = followersDev.split('.');
+            setFollowersCount(followersDev.split('.')[0]+'K')
+        }else{
+            setFollowersCount(followers)
+        }
+
+
+    },[followers])
 
     return (
         <CardWrapper>
             <div className="card--header">
                 <div className="card--profileImage">
-                    <Image link={IMAGE_URI + profilePicture} shape="circle" />
+                    <Image link={profilePicture} shape="circle" />
                 </div>
                 <div className="card--userInfo">
                     <p className="card--userInfo--userName">@{username}</p>
                     <div className="card--userInfo--tags">
-                        {tags ? tags.map(tag => (
-                            <Button type="grey" shape="oval" text={tag} />
+                        {tags ? tags.map((tag, index) => (
+                            <Button type="grey" shape="oval" text={tag} key={index}/>
                         )) : ''}
                     </div>
                 </div>
 
             </div>
             <div className="card--devider--info">
-                <p>{parseInt(followers) / 1000 >= 1 ? (parseInt(followers) / 1000) + 'k' : followers} followers</p>
+                <p>{followersCount} followers</p>
             </div>
             <div className="card--profile-last-posts">
-                {lastPosts ? lastPosts.map(post => (
-                    <Image link={post.img} shape="oval" />
+                {lastPosts ? lastPosts.map((post, index) => (
+                    <Image link={post} shape="oval" style={{    width: "25%",margin: "5px"}}/>
 
-                )) : ''}
+                 )) : ''} 
             </div>
             <div style={{ margin: "5px" }}>
                 <div className="card-button--container" >

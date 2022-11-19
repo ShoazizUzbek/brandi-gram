@@ -14,10 +14,10 @@ export default function Nav(){
                 </Link>
             </div>
             <div className="navbar-search-icon">
-            <div class="wrap">
-                <div class="search">
-                    <input type="text" class="searchTerm" placeholder="What are you looking for?" />
-                    <button type="submit" class="searchButton">
+            <div className="wrap">
+                <div className="search">
+                    <input type="text" className="searchTerm" placeholder="What are you looking for?" />
+                    <button type="submit" className="searchButton">
                         <FaSearch />
                     </button>
                 </div>

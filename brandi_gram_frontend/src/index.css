@@ -67,3 +67,10 @@ label{
   font-weight: 600;
 
 }
+.profile_url{
+  color: black;
+  text-decoration: none;
+}
+.profile_url:hover{
+  text-decoration: underline;
+}
