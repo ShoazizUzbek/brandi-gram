@@ -4,6 +4,8 @@ import Button from "../../UI/Button/Button";
 import './Auth.css'
 import { API_URI } from "../../../services/Api";
 import MultiSelect from "../../UI/MultiSelect/MultiSelect";
+import { Link } from "react-router-dom";
+
 
 export default function Auth() {
 
@@ -97,6 +99,7 @@ export default function Auth() {
                         {categoryList && categoryList.length > 0 ? <MultiSelect name="category" id="category" incomingList={categoryList} newSelections={newCategorySelect}/> : ''}
                         <div style={{color: 'red'}}>{error}</div>
                         <div className="card-button--container">
+                            <Link to={"/login"} style={{marginRight: "5px"}}>Do you have account?</Link>
                             <Button action={submit} disabled={buttonState}/>
                         </div>
                     </div>

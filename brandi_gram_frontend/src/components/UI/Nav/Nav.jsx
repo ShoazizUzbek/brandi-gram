@@ -1,13 +1,17 @@
 import { CgProfile } from 'react-icons/cg'
 import { FaSearch } from 'react-icons/fa'
-import './Nav.css'
+import './Nav.css';
+import { Link } from "react-router-dom";
+
 export default function Nav(){
 
 
     return(
         <div className="navbar--container">
             <div className="navbar--logo">
-                BrandiGram
+                <Link to={'/'} style={{textDecoration: 'none', color: 'black'}}>
+                    BrandiGram
+                </Link>
             </div>
             <div className="navbar-search-icon">
             <div class="wrap">
@@ -20,7 +24,9 @@ export default function Nav(){
                 </div>
             </div>
             <div className="profile">
-                <CgProfile />
+                <Link to={localStorage.getItem('token') ? '' : '/authentification'} style={{textDecoration: 'none', color: 'black'}}>
+                    <CgProfile />
+                </Link>
             </div>
         </div>
     )

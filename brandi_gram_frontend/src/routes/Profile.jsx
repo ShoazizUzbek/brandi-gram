@@ -4,7 +4,9 @@ import { useParams } from 'react-router-dom';
 import { API_URI } from "../services/Api";
 import Button from "../components/UI/Button/Button";
 import PostsCard from "../components/UI/posts/PostCard/PostCard";
-import {AiOutlinePlusCircle} from "react-icons/ai/index.esm"
+import {AiOutlinePlusCircle} from "react-icons/ai/index.esm";
+import { Link } from "react-router-dom";
+
 export default function Profile({}){
     const {profileId} = useParams();
 
@@ -59,7 +61,7 @@ export default function Profile({}){
                         )) : ''}
                     </div>
                     <div className="profile" style={{fontSize: "35px"}}>
-                        {login ? <AiOutlinePlusCircle /> : ''}
+                        {login && profileId ? <Link to={'/create-post/'+profileId} style={{textDecoration: 'none', color: 'black'}}><AiOutlinePlusCircle /></Link> : ''}
                         {/* <CgProfile /> */}
                     </div>
                 </div>

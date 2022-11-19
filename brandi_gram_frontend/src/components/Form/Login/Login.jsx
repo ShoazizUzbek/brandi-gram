@@ -3,6 +3,8 @@ import CardWrapper from "../../UI/CardWrapper/CardWrapper"
 import Button from "../../UI/Button/Button"
 import { API_URI } from "../../../services/Api";
 import { redirect, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+
 export default function Login() {
     const [phone_number, setPhoneNumber] = useState('998158661')
     const [password, setPassword] = useState('tester123465')
@@ -56,6 +58,8 @@ export default function Login() {
                     <div style={{color: 'red'}}>{error}</div>
                 
                     <div className="card-button--container">
+                        <Link to={"/authentification"} style={{marginRight: "5px"}}>Registration?</Link>
+
                         <Button action={submit} disabled={buttonState}/>
                     </div>
                 

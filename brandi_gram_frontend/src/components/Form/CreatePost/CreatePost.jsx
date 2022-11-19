@@ -3,9 +3,13 @@ import CardWrapper from "../../UI/CardWrapper/CardWrapper";
 import { useNavigate } from "react-router-dom";
 import { API_URI } from "../../../services/Api";
 import Button from "../../UI/Button/Button";
+import { useParams } from 'react-router-dom';
+
 
 
 export default function CreatePost(){
+    const {profileId} = useParams();
+
     const [post_url, setPostUrl] = useState('');
     const [price, setPrice] = useState(0)
     const [descripiton, setDescripiton] = useState('')
@@ -23,7 +27,7 @@ export default function CreatePost(){
             price: price,
             description: descripiton,
             tags: [1,2],
-            profile_id: 3
+            profile_id: profileId
 
         }
 

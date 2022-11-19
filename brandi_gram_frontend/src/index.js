@@ -32,7 +32,7 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage/>,
   },
   {
-    path: "/create-post",
+    path: "/create-post/:profileId",
     element: <CreatePostPage />,
     errorElement: <ErrorPage/>,
   },
