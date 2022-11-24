@@ -79,7 +79,7 @@ export default function Main(){
             </div>
             <div className="profile-list--container">
                 {profileList && profileList.length > 0 ?  profileList.map(item=>(
-                        <div style={{marginLeft: "5px", marginRight: "5px"}} key={item.id}> <Card username={item.username} profilePicture={item.profile_picture} followers={item.followers} tags={item.category} id={item.id} lastPosts={item.posts}/></div>
+                        <div style={{marginLeft: "5px", marginRight: "5px", width: '20%'}} key={item.id}> <Card username={item.username} profilePicture={item.profile_picture} followers={item.followers} tags={item.category} id={item.id} lastPosts={item.posts}/></div>
                 )) : ''}
             </div>
         </div>

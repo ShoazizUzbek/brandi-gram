@@ -93,7 +93,7 @@ export default function Profile({}){
                 <div className="profile-list--container">
                 
                     {profileList && profileList.posts && profileList.posts.length > 0 ? profileList.posts.map((item, index)=>(
-                        <div style={{marginLeft: "5px", marginRight: "5px"}}><PostsCard price={item.price} image={item.post_image} descripiton={item.descripiton} title={item.title} redirectLink={item.post_url} key={index}/></div>
+                        <div style={{marginLeft: "5px", marginRight: "5px", width: "20%"}}><PostsCard price={item.price} image={item.post_image} descripiton={item.description} title={item.title} redirectLink={item.post_url} key={index}/></div>
                     )) : ''}
                     {/* <div style={{marginLeft: "5px", marginRight: "5px"}}><PostsCard price={'15$'} image={profileList.profile_picture} descripiton={'Some thisty'} title={'Some thisty'} redirectLink={'link.uz'} /></div> */}
 

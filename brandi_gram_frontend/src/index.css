@@ -54,11 +54,13 @@ label{
   width: 80%;
   padding: 20px 40px;
   display: flex;
+
 }
 .profile-list--container{
   width: 80%;
   padding: 20px 40px;
   display: flex;
+  flex-wrap: wrap;
 }
 
 .profile-navbar{

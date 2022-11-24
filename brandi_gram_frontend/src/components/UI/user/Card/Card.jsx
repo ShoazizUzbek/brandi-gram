@@ -46,7 +46,9 @@ export default function Card({ username, profilePicture, tags, followers, lastPo
             </div>
             <div className="card--profile-last-posts">
                 {lastPosts ? lastPosts.map((post, index) => (
-                    <Image link={post} shape="oval" style={{    width: "25%",margin: "5px"}}/>
+                    <div style={{width: "25%",margin: "5px"}}>
+                        <Image link={post} shape="oval" />
+                    </div>
 
                  )) : ''} 
             </div>

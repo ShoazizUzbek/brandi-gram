@@ -7,15 +7,23 @@
  padding: 10px;
  font-size: 14px;
  color: #ccc;
+ /* border-top: 1px solid #ccc;
+ border-bottom: 1px solid #ccc; */
 }
 .posts-card--body .posts-card--price-list span{
-    font-weight: 400;
+    font-weight: 600;
+    color: #000;
 }
 .posts-card--body .posts-card--price-list{
     font-weight: 600;
+    /* border-bottom: 1px solid #ccc;
+    border-top: 1px solid #ccc; */
+
 }
 .posts-card--body .posts-card--description span{
     font-weight: 600;
+    color: #000;
+
 }
 .posts-card--body .posts-card--description{
     font-size: 13px;
@@ -23,5 +31,6 @@
 }
 
 .posts-card--footer{
+    padding: 5px;
     border-top: 1px solid #ccc;
 }

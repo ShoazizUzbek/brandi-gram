@@ -12,9 +12,9 @@ class ProfileListView(APIView):
         category_data = query_params.get('category_id')
         if category_data:
             category.append(category_data[0])
-            profiles = User.objects.prefetch_related('posts', 'category').filter(category__in=category)
+            profiles = User.objects.prefetch_related('posts', 'category').filter(category__in=category).exclude(id=6)
         else:
-            profiles = User.objects.prefetch_related('posts', 'category').all()
+            profiles = User.objects.prefetch_related('posts', 'category').all().exclude(id=6)
 
         data = []
         for profile in profiles:

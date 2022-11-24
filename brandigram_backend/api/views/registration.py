@@ -16,6 +16,7 @@ from api.serializers.profile import UserSerializer
 from common.models import Category
 from user.models import User
 
+from brandigram_backend import settings
 
 class RegistrationView(APIView):
 
@@ -51,9 +52,10 @@ class RegistrationView(APIView):
             profile_url = validated_data.get('profile_url')
             result = re.search('https://www.instagram.com/(.*)/', profile_url)
             username = result.group(1)
-
-            profile = Client()
-            profile.login("brandigram.uz", "newkhantigr1998")
+            #profile = Client()
+            #profile.login("shoaziz_nasri", "newkhantigr")
+            #profile.login("brandigram.uz", "newkhantigr1998")
+            profile = settings.profile
 
             user_insta = profile.user_info_by_username(username)
             profile_pic_url = user_insta.profile_pic_url

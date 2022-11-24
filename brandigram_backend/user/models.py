@@ -9,8 +9,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     first_name = models.CharField(max_length=75, default="" )
     last_name = models.CharField(max_length=75, default="")
     phone_number = models.CharField(max_length=12,unique=True)
-    profile_url = models.URLField()
-    instagram_category = models.CharField(default="", max_length=255, null=True)
+    profile_url = models.URLField(max_length=1000)
+    instagram_category = models.CharField(default="", max_length=1300, null=True)
 
     category = models.ManyToManyField('common.Category', related_name='profiles' )
 

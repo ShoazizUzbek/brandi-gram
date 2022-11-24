@@ -11,6 +11,7 @@ from rest_framework.views import APIView
 
 from api.serializers.post import PostSerializer
 from post.models import Post, Tag
+from brandigram_backend import settings
 
 
 class PostView(APIView):
@@ -44,15 +45,15 @@ class PostView(APIView):
             post.tags.set(tags_list)
             #scrape image post.image = ....
             post_url = validated_data.get('post_url')
-            profile = Client()
-            profile.login("brandigram.uz", "newkhantigr1998")
+            profile = settings.profile
             media_id = profile.media_pk_from_url(post_url)
             media = profile.media_info(media_id)
             caption_text = media.caption_text
-            resource = media.resources[0]
-            thumbnail_url = resource.thumbnail_url
-            file_name, lf = self.get_image(thumbnail_url)
-            post.post_image.save(file_name, files.File(lf))
+            if media.resources:
+                resource = media.resources[0]
+                thumbnail_url = resource.thumbnail_url
+                file_name, lf = self.get_image(thumbnail_url)
+                post.post_image.save(file_name, files.File(lf))
             post.post_title = caption_text
             post.save()
         return Response(data={'success': True})

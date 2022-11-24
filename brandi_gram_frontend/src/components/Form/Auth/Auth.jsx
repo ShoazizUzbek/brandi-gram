@@ -18,6 +18,7 @@ export default function Auth() {
     const [categoryList, setCategoryList] = useState([])
     const [buttonState, setButtonState] = useState(false)
     const [error, setError] = useState('')
+    const [loggedIn, setLoggedIn] = useState('')
     
     useEffect(()=>{
         getCategoryList();
@@ -73,6 +74,8 @@ export default function Auth() {
         console.log(authInfo)
         if(!authInfo.success && authInfo.detail){
             setError(authInfo.detail)
+        }else{
+            setLoggedIn('You have successfully registered in');
         }
     }
     function newCategorySelect(newCategoryLits){
@@ -98,6 +101,7 @@ export default function Auth() {
                         {/* <input type="text" value={category} name="category" className="input card-input" onChange={(e)=>setCategory(e.target.value)} /> */}
                         {categoryList && categoryList.length > 0 ? <MultiSelect name="category" id="category" incomingList={categoryList} newSelections={newCategorySelect}/> : ''}
                         <div style={{color: 'red'}}>{error}</div>
+                        <div style={{color: 'green'}}>{loggedIn}</div>
                         <div className="card-button--container">
                             <Link to={"/login"} style={{marginRight: "5px"}}>Do you have account?</Link>
                             <Button action={submit} disabled={buttonState}/>
